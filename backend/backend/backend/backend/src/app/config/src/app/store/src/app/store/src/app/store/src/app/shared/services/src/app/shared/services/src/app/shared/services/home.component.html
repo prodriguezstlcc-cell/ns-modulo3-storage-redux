@@ -1,0 +1,18 @@
+<ActionBar title="Inicio"></ActionBar>
+<StackLayout>
+
+  <Label [text]="'Hola, ' + nombreUsuario" class="titulo"></Label>
+
+  <Label text="📖 Lista Leer Ahora" class="titulo"></Label>
+
+  <!-- Listado reactivo del store de Redux -->
+  <ListView [items]="leerAhora$ | async">
+    <ng-template let-item="item">
+      <FlexboxLayout flexDirection="row" alignItems="center" padding="10">
+        <Label [text]="item.titulo" flexGrow="1" class="titulo"></Label>
+        <Label [text]="item.categoria" class="badge"></Label>
+      </FlexboxLayout>
+    </ng-template>
+  </ListView>
+
+</StackLayout>
