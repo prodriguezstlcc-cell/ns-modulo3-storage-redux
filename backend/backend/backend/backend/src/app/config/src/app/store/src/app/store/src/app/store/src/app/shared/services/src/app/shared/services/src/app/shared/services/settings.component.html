@@ -1,0 +1,10 @@
+<ActionBar title="Configuración"></ActionBar>
+<StackLayout class="card">
+  <Label text="Nombre de usuario:" class="titulo"></Label>
+  <TextField
+    [(ngModel)]="nombreUsuario"
+    hint="Escribe tu nombre"
+    class="input">
+  </TextField>
+  <Button text="💾 Guardar" (tap)="guardar()" class="btn"></Button>
+</StackLayout>
