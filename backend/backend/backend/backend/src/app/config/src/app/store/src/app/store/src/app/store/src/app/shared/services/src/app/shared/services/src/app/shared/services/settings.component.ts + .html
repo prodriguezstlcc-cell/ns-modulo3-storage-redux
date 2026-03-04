@@ -1,0 +1,22 @@
+// ── settings.component.ts ─────────────────────────────
+import { Component, OnInit } from '@angular/core';
+import { ApplicationSettings } from '@nativescript/core';
+
+@Component({
+  selector: 'ns-settings',
+  templateUrl: './settings.component.html'
+})
+export class SettingsComponent implements OnInit {
+  nombreUsuario: string = '';
+
+  ngOnInit() {
+    // Lee el nombre guardado de forma persistente
+    this.nombreUsuario = ApplicationSettings.getString('username', 'Usuario');
+  }
+
+  guardar() {
+    // Persiste el nombre con AppSettings
+    ApplicationSettings.setString('username', this.nombreUsuario);
+    alert('✅ Nombre guardado: ' + this.nombreUsuario);
+  }
+}
