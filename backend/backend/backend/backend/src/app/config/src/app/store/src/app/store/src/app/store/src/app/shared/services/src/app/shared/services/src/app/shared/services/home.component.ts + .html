@@ -1,0 +1,24 @@
+// ── home.component.ts ─────────────────────────────────
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from '../../../../store/app.state';
+import { ApplicationSettings } from '@nativescript/core';
+
+@Component({
+  selector: 'ns-home',
+  templateUrl: './home.component.html'
+})
+export class HomeComponent implements OnInit {
+  leerAhora$: Observable<any[]>;
+  nombreUsuario: string = '';
+
+  constructor(private store: Store<AppState>) {
+    // Selección reactiva del store de Redux
+    this.leerAhora$ = this.store.select(state => state.leerAhora);
+  }
+
+  ngOnInit() {
+    this.nombreUsuario = ApplicationSettings.getString('username', 'Usuario');
+  }
+}
